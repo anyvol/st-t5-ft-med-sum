@@ -23,6 +23,8 @@ from transformers import AutoTokenizer
 from transformers import AutoModelForSeq2SeqLM, DataCollatorForSeq2Seq,Seq2SeqTrainingArguments, Seq2SeqTrainer
 import nltk
 
+nltk.download('punkt')
+
 # model_name = "checkpoint-2200"
 
 # model_dir = f"{model_name}"
