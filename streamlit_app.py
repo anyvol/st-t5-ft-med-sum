@@ -21,9 +21,7 @@ def clear_text():
 from transformers import AutoTokenizer
 # from transformers import T5Tokenizer, T5ForConditionalGeneration
 from transformers import AutoModelForSeq2SeqLM, DataCollatorForSeq2Seq,Seq2SeqTrainingArguments, Seq2SeqTrainer
-import nltk
 
-nltk.download('punkt')
 
 # model_name = "checkpoint-2200"
 
@@ -50,6 +48,10 @@ text = st.text_area("Input text to summarize",
                     ,key="text")
 
 if text != '':
+    import nltk
+
+    nltk.download('punkt')
+
     st.write('Our AI already reading your input and making a summary. Please wait... ')
     max_input_length = 512
 
@@ -69,7 +71,7 @@ if text != '':
     st.button('Clear',on_click=clear_text)
     # st.write('input')
 
-
+    
     # st.info('This is a purely informational message. If you click the button below, there will be celebration!')
     # if st.button('Click for celebration'):
     #     st.balloons()
