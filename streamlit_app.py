@@ -2,10 +2,11 @@
 T5-base finetuned on 150k medium articles
 '''
 
-
-# import subprocess
-# import sys
 import streamlit as st
+
+import subprocess
+import sys
+
 
 # def install(package):
 #     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
@@ -22,19 +23,24 @@ from transformers import AutoTokenizer
 from transformers import AutoModelForSeq2SeqLM, DataCollatorForSeq2Seq,Seq2SeqTrainingArguments, Seq2SeqTrainer
 import nltk
 
-model_name = "t5-base-medium-title-generation\checkpoint-2200"
+# model_name = "checkpoint-2200"
 
-model_dir = f"Final work FLAN FT/Models/{model_name}"
+# model_dir = f"{model_name}"
 
-tokenizer = AutoTokenizer.from_pretrained(model_dir)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
+st.title('T5 Finetuned summarizator :sunglasses:')
 
+st.write('Loading model...')
+
+tokenizer = AutoTokenizer.from_pretrained("user336/t5-sum-checkpoint-2200")
+model = AutoModelForSeq2SeqLM.from_pretrained("user336/t5-sum-checkpoint-2200")
+
+st.write('Done!')
 # st.text_input("Input text to summarize", key="text")
 
 # You can access the value at any point with:
 # st.session_state.text
 
-st.title('T5 Finetuned summarizator :sunglasses:')
+
 # st.title('A title with _italics_ :blue[colors] and emojis :sunglasses:')
 
 text = st.text_area("Input text to summarize",
